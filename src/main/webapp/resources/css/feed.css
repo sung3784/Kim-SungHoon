@@ -1,0 +1,188 @@
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+	-webkit-text-size-adjust: none;
+	-ms-overflow-style: scrollbar;
+	background: #fff;
+	background-color: #1e1f23;
+	padding-top: 8rem;
+	-ms-overflow-style: scrollbar;
+}
+
+body:after {
+	-moz-pointer-events: none;
+	-webkit-pointer-events: none;
+	-ms-pointer-events: none;
+	pointer-events: none;
+	-moz-transition: opacity 1.5s ease-in-out, visibility 1.5s;
+	-webkit-transition: opacity 1.5s ease-in-out, visibility 1.5s;
+	-ms-transition: opacity 1.5s ease-in-out, visibility 1.5s;
+	transition: opacity 1.5s ease-in-out, visibility 1.5s;
+	content: '';
+	background-image: url(../images/front.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	display: block;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	visibility: visible;
+	opacity: 0.4;
+}
+
+/* Main */
+#main>.inner {
+	margin: 0 auto;
+	width: 62rem;
+	max-width: 90%;
+	margin-bottom: 2rem;
+	background: rgba(255, 255, 255, 0.95);
+	-webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+	border-radius: 4px;
+}
+
+-ms-viewport {
+	width: device-width;
+}
+
+/* 기존 feed.jsp 에 정의되어있던 코드 */
+.write {
+	width: 500px;
+	heigth: 200px;
+	border-width: 2px;
+	border-color: skyblue;
+	background-color: skyblue;
+	margin: 10px;
+	border-radius: 10px;
+}
+
+/* textarea:focus {
+	border: none;
+    overflow: auto;
+    outline: none;
+	border-color: skyblue;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+} */
+
+.feed_write_area {
+	/* width: 577.67px; */
+	width: 100%;
+	height: 100px;
+	resize: none;
+}
+
+.input_imgs {
+	display: none;
+}
+
+.img_part {
+	width: 500px;
+	text-align: left;
+	margin-left: 15px;
+}
+
+.img_part img {
+	max-width: 150px;
+}
+
+.input_imgs {
+	display: none;
+}
+
+/* 추가한 코드 */
+.defaultMain {
+	background-color: #f8f8f8;
+	/* background-color: transparent; */
+	padding: 3rem;
+}
+
+.mainColor {
+	background-color: #754f44;
+}
+
+/* 파일 분리 전에 feed.jsp 에 박혀있던 소스로
+현재 topMenu.jsp에는 해당 클래스를 적용한 element가 보이지 않음 */
+.existed-inner {
+	width: 40%;
+	/* padding: 1rem; */
+}
+
+.profile {
+	width: 50px;
+	height: 50px;
+	object-fit: cover;
+	object-position: top;
+	border-radius: 50%;
+}
+
+.img_show_example {
+	widhth: 150px;
+	height: 90px;
+}
+
+.tarae_img {
+	widhth: 150px;
+	height: 90px;
+}
+
+body.is-article-visible #bg:after {
+	-moz-transform: scale(1.0825);
+	-webkit-transform: scale(1.0825);
+	-ms-transform: scale(1.0825);
+	transform: scale(1.0825);
+	-moz-filter: blur(0.2rem);
+	-webkit-filter: blur(0.2rem);
+	-ms-filter: blur(0.2rem);
+	filter: blur(0.2rem);
+}
+
+body.is-preload #header {
+	-moz-filter: blur(0.125rem);
+	-webkit-filter: blur(0.125rem);
+	-ms-filter: blur(0.125rem);
+	filter: blur(0.125rem);
+}
+.mfeed{
+margin-left : 20%;
+margin-right : 20%;
+	
+}
+.mentionFeedTest{
+	margin-left : 20%;
+margin-right : 20%;
+	
+}
+
+
+
+

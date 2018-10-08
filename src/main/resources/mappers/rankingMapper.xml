@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.book.sns.dao.RankingMapper">
+	<select id="getCategoryAmount" resultType="HashMap">
+		select * from 
+			(select 
+				count(*) categoryCount, 
+				categories
+			from 
+				book
+			group by 
+				categories 
+			order by categoryCount desc)
+		where rownum <![CDATA[  <  ]]>  11
+	</select>
+	
+	<select id="getTags" resultType="String">
+		select tag from feed
+	</select>
+	
+	<select id="getBuyCountDistribution" resultType="HashMap">
+		select 
+			(case
+		        when bookCount <![CDATA[ <= ]]> 5 then '0~5권'
+		        when bookCount <![CDATA[ > ]]> 5  AND bookCount <![CDATA[ <= ]]>  10 THEN '6~10권'
+		        when bookCount <![CDATA[ > ]]> 10  AND bookCount <![CDATA[ <= ]]>  15 THEN '11~15권'
+		        when bookCount <![CDATA[ > ]]> 15  AND bookCount <![CDATA[ <= ]]>  20 THEN '16~20권'
+		        when bookCount <![CDATA[ > ]]> 20  AND bookCount <![CDATA[ <= ]]>  25 THEN '21~25권'
+		        else '25권 이상'
+		    end) bookCount, 
+			count(*) userCount
+		from
+			(select 
+				count(*) bookCount 
+			from 
+				book 
+			where 
+				regdate between trunc(sysdate, 'MM') and sysdate
+			group by 
+				userId) 
+		group by 
+			(case
+		        when bookCount <![CDATA[ <= ]]> 5 then '0~5권'
+		        when bookCount <![CDATA[ > ]]> 5  AND bookCount <![CDATA[ <= ]]>  10 THEN '6~10권'
+		        when bookCount <![CDATA[ > ]]> 10  AND bookCount <![CDATA[ <= ]]>  15 THEN '11~15권'
+		        when bookCount <![CDATA[ > ]]> 15  AND bookCount <![CDATA[ <= ]]>  20 THEN '16~20권'
+		        when bookCount <![CDATA[ > ]]> 20  AND bookCount <![CDATA[ <= ]]>  25 THEN '21~25권'
+		        else '25권 이상'
+		    end)
+		order by 
+			bookCount
+	</select>
+	
+</mapper>

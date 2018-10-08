@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.anychart-credits {
+  left: 10px !important;
+  width: 200px !important;
+  margin: 50px 0;
+}
+
+.grid-container-2 {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 10px;
+	padding: 10px;
+}
+
+.grid-container-3 {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 10px;
+	padding: 10px;
+}
+
+.grid-container-2 .grid-container-3 > div {
+	text-align: center;
+	padding: 20px 0;
+	font-size: 30px;
+}

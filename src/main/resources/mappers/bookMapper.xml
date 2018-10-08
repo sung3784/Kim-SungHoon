@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.book.sns.dao.BookMapper">
+	<insert id="insertBook" parameterType="book">
+		insert into book (
+			bookNum,
+			isbn,
+			authors,
+			title,
+			publisher,
+			contents,
+			userId,
+			categories,
+			memo,
+			price,
+			thumbnail,
+			readyn
+		) values (
+			<!-- #{bookNum}, -->
+			#{bookNum},
+			#{isbn},
+			#{authors},
+			#{title},
+			#{publisher},
+			#{contents},
+			#{userId},
+			#{categories},
+			#{memo},
+			#{price},
+			#{thumbnail},
+			#{readYN}
+		)
+	</insert>
+
+	<select id="selectNextVal" resultType="int">
+		select book_seq.nextVal from dual
+	</select>
+
+	<select id="dbBookFind" parameterType="book" resultType="book">
+		select *
+		from
+		book
+		where
+		isbn = #{isbn}
+		and title = #{title}
+		and authors = #{authors}
+		and userId = #{userId}
+	</select>
+
+	<!-- 서재 책 커버 가져옴 -->
+	<select id="selectBookCover" parameterType="book"
+		resultType="book">
+		SELECT
+		booknum,
+		isbn,
+		title,
+		thumbnail,
+		userid,
+		readyn
+		FROM
+		book
+		WHERE
+		userid=#{userId}
+	</select>
+
+	<!--읽은 책 표시 O/X -->
+	<update id="bookUpdate" parameterType="book">
+		UPDATE
+		book
+		SET
+		READYN = #{readYN},
+		memo = #{memo}
+		WHERE
+		booknum = #{bookNum}
+	</update>
+
+	<select id="getBooksCount" parameterType="String"
+		resultType="Integer">
+		select count(*) from book where userId = #{value}
+	</select>
+
+	<select id="selectOneBook" parameterType="String"
+		resultType="book">
+		select * from book
+		where booknum = #{bookNum}
+	</select>
+
+	<delete id="deleteBook" parameterType="String">
+		delete from book where booknum = #{bookNum}
+	</delete>
+
+	<!--페이징처리 -->
+	<select id="getTotal" resultType="int">
+		SELECT count(*) FROM book
+	</select>
+
+</mapper>
